@@ -3,150 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus System</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <title>Nexus VPN</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #080b12;
-            color: #ffffff;
-            min-height: 100vh;
-        }
-
-        header {
-            padding: 28px 8%;
-            border-bottom: 1px solid #1d2430;
-        }
-
-        .brand {
-            font-size: 14px;
-            letter-spacing: 3px;
-            color: #8fa3b8;
-        }
-
-        main {
-            width: min(1100px, 90%);
-            margin: auto;
-            padding: 80px 0;
-        }
-
-        .hero {
-            margin-bottom: 60px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 76px);
-            margin-bottom: 18px;
-        }
-
-        .hero p {
-            max-width: 650px;
-            color: #9da9b8;
-            line-height: 1.7;
-        }
-
-        .modules {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .module-card {
-            display: block;
-            padding: 28px;
-            min-height: 180px;
-            background: #0e131c;
-            border: 1px solid #202a38;
-            border-radius: 14px;
-            color: #ffffff;
-            text-decoration: none;
-            transition: 0.2s ease;
-        }
-
-        .module-card:hover {
-            transform: translateY(-4px);
-            border-color: #4c637d;
-            background: #121925;
-        }
-
-        .module-card h2 {
-            margin-bottom: 12px;
-            font-size: 22px;
-        }
-
-        .module-card p {
-            color: #8997a8;
-            line-height: 1.6;
-        }
-
-        .status {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 12px;
-            letter-spacing: 1px;
-            color: #6f8196;
-        }
-    </style>
+    <link rel="stylesheet" href="nexus-vpn.css">
 </head>
 
 <body>
 
-    <header>
-        <div class="brand">SHOTOPAPER TECH</div>
+    <header class="topbar">
+        <div>
+            <div class="brand">SHOTOPAPER TECH</div>
+            <h1>Nexus VPN</h1>
+        </div>
+
+        <div class="version">
+            v1.0.0
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1>Nexus System</h1>
-            <p>
-                A modular technology ecosystem for networking,
-                security, development, experimentation and system tools.
-            </p>
-        </section>
+    <main class="dashboard">
 
-        <section class="modules">
+        <section class="connection-panel">
 
-            <a href="nexus-vpn.html" class="module-card">
-                <h2>Nexus VPN</h2>
-                <p>
-                    Secure networking layer with connection management,
-                    gateway systems, monitoring and security components.
-                </p>
-                <span class="status">MODULE</span>
-            </a>
+            <div class="status-label">
+                CONNECTION STATUS
+            </div>
 
-            <a href="#" class="module-card">
-                <h2>Nexus API Shield</h2>
-                <p>
-                    API protection and secure communication infrastructure.
-                </p>
-                <span class="status">COMING SOON</span>
-            </a>
+            <div id="connectionStatus" class="connection-status">
+                DISCONNECTED
+            </div>
 
-            <a href="#" class="module-card">
-                <h2>Nexus Security</h2>
-                <p>
-                    Security monitoring, device protection and system controls.
-                </p>
-                <span class="status">COMING SOON</span>
-            </a>
-
-            <a href="#" class="module-card">
-                <h2>Red Team Laboratory</h2>
-                <p>
-                    Controlled security testing and experimental environments.
-                </p>
-                <span class="status">LAB</span>
-            </a>
+            <button id="connectButton" class="connect-button">
+                CONNECT
+            </button>
 
         </section>
+
+        <section class="network-grid">
+
+            <div class="info-card">
+                <span>PUBLIC IP</span>
+                <strong id="publicIp">Not protected</strong>
+            </div>
+
+            <div class="info-card">
+                <span>LOCATION</span>
+                <strong id="location">Unknown</strong>
+            </div>
+
+            <div class="info-card">
+                <span>PROTOCOL</span>
+                <strong id="protocol">WireGuard</strong>
+            </div>
+
+            <div class="info-card">
+                <span>LATENCY</span>
+                <strong id="latency">--</strong>
+            </div>
+
+        </section>
+
+        <section class="server-panel">
+
+            <div class="panel-header">
+                <h2>VPN SERVER</h2>
+            </div>
+
+            <div class="server-info">
+
+                <div>
+                    <span>SERVER</span>
+                    <strong id="serverName">No connection</strong>
+                </div>
+
+                <div>
+                    <span>LOAD</span>
+                    <strong id="serverLoad">--</strong>
+                </div>
+
+                <div>
+                    <span>PACKET LOSS</span>
+                    <strong id="packetLoss">--</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="security-panel">
+
+            <div class="panel-header">
+                <h2>PROTECTION</h2>
+            </div>
+
+            <div class="security-status">
+                <span>SECURITY LAYER</span>
+                <strong id="protectionStatus">INACTIVE</strong>
+            </div>
+
+        </section>
+
     </main>
+
+    <footer>
+        Nexus VPN · Nexus System
+    </footer>
+
+    <script src="core/connection-core.js"></script>
+    <script src="core/nexus-wireguard-adapter.js"></script>
+    <script src="servers/server-manager.js"></script>
+    <script src="servers/health-checker.js"></script>
+    <script src="servers/failover-manager.js"></script>
+    <script src="security/security-layer.js"></script>
+    <script src="monitoring/monitoring-core.js"></script>
+    <script src="gateway/gateway-config.js"></script>
+    <script src="gateway/gateway-registry.js"></script>
+    <script src="identity/device-key-manager.js"></script>
+    <script src="core/nexus-runtime.js"></script>
+    <script src="nexus-vpn.js"></script>
 
 </body>
 </html>
