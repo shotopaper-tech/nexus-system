@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexus VPN</title>
+
+    <link rel="stylesheet" href="nexus-vpn.css">
+</head>
+
+<body>
+
+    <main class="vpn-app">
+
+        <!-- HEADER -->
+        <header class="vpn-header">
+
+            <div class="brand">
+                <span class="brand-name">CAKRAWALA</span>
+                <span class="brand-subtitle">NEXUS</span>
+            </div>
+
+            <div class="version">
+                v0.1.0
+            </div>
+
+        </header>
+
+
+        <!-- MAIN TITLE -->
+        <section class="hero">
+
+            <p class="eyebrow">
+                SECURE NETWORK
+            </p>
+
+            <h1>
+                Nexus VPN
+            </h1>
+
+            <p class="description">
+                Private, encrypted networking powered by WireGuard.
+            </p>
+
+        </section>
+
+
+        <!-- CONNECTION PANEL -->
+        <section class="connection-panel">
+
+            <div class="connection-status">
+                <span id="statusIndicator"></span>
+
+                <span id="connectionStatus">
+                    DISCONNECTED
+                </span>
+            </div>
+
+
+            <button
+                id="connectButton"
+                class="connect-button"
+                type="button">
+
+                <span class="connect-label">
+                    CONNECT
+                </span>
+
+            </button>
+
+
+            <p id="connectionMessage" class="connection-message">
+                Your connection is currently unprotected.
+            </p>
+
+        </section>
+
+
+        <!-- NETWORK INFORMATION -->
+        <section class="network-grid">
+
+            <article class="info-card">
+
+                <span class="card-label">
+                    PUBLIC IP
+                </span>
+
+                <strong id="ipAddress">
+                    --
+                </strong>
+
+            </article>
+
+
+            <article class="info-card">
+
+                <span class="card-label">
+                    LOCATION
+                </span>
+
+                <strong id="location">
+                    --
+                </strong>
+
+            </article>
+
+
+            <article class="info-card">
+
+                <span class="card-label">
+                    PROTOCOL
+                </span>
+
+                <strong>
+                    WireGuard
+                </strong>
+
+            </article>
+
+
+            <article class="info-card">
+
+                <span class="card-label">
+                    LATENCY
+                </span>
+
+                <strong id="latency">
+                    -- ms
+                </strong>
+
+            </article>
+
+        </section>
+
+
+        <!-- SERVER -->
+        <section class="server-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="card-label">
+                        VPN SERVER
+                    </span>
+
+                    <h2 id="serverName">
+                        No server selected
+                    </h2>
+                </div>
+
+                <span id="serverStatus" class="server-status">
+                    OFFLINE
+                </span>
+
+            </div>
+
+
+            <div class="server-details">
+
+                <div>
+                    <span class="detail-label">
+                        REGION
+                    </span>
+
+                    <span id="serverRegion">
+                        --
+                    </span>
+                </div>
+
+
+                <div>
+                    <span class="detail-label">
+                        LOAD
+                    </span>
+
+                    <span id="serverLoad">
+                        --
+                    </span>
+                </div>
+
+
+                <div>
+                    <span class="detail-label">
+                        PACKET LOSS
+                    </span>
+
+                    <span id="packetLoss">
+                        --
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROTECTION -->
+        <section class="protection-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="card-label">
+                        NEXUS PROTECTION
+                    </span>
+
+                    <h2>
+                        Security Layer
+                    </h2>
+                </div>
+
+                <span
+                    id="protectionStatus"
+                    class="protection-status">
+
+                    READY
+
+                </span>
+
+            </div>
+
+
+            <div class="protection-list">
+
+                <div class="protection-item">
+
+                    <span>
+                        Kill Switch
+                    </span>
+
+                    <span id="killSwitchStatus">
+                        READY
+                    </span>
+
+                </div>
+
+
+                <div class="protection-item">
+
+                    <span>
+                        DNS Leak Protection
+                    </span>
+
+                    <span id="dnsStatus">
+                        READY
+                    </span>
+
+                </div>
+
+
+                <div class="protection-item">
+
+                    <span>
+                        IPv6 Leak Protection
+                    </span>
+
+                    <span id="ipv6Status">
+                        READY
+                    </span>
+
+                </div>
+
+
+                <div class="protection-item">
+
+                    <span>
+                        Device Key
+                    </span>
+
+                    <span id="deviceKeyStatus">
+                        READY
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="vpn-footer">
+
+            <span>
+                Nexus VPN
+            </span>
+
+            <span>
+                WireGuard-based networking
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <script src="nexus-vpn.js"></script>
+
+</body>
+
+</html>
